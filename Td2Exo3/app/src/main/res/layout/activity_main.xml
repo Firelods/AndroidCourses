@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity"
+        android:gravity="center"
+
+        >
+
+
+
+
+        <Button
+            android:id="@+id/buttonFondu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fondu" />
+
+        <Button
+            android:id="@+id/buttonRetrecissement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rétrécissement" />
+
+        <Button
+            android:id="@+id/buttonSortie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sortie" />
+
+        <Button
+            android:id="@+id/buttonFonduAgrandissement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fondu + Agrandissement" />
+
+        <Button
+            android:id="@+id/buttonTvOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TV OFF" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+
+                android:id="@+id/Reapparition"
+                android:backgroundTint="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Réapparition"
+                android:textSize="10sp" />
+
+            <SeekBar
+                android:id="@+id/slider"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:valueFrom="100"
+                android:valueTo="3000"
+                />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0%" />
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

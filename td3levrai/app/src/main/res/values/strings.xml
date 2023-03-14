@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">td3levrai</string>
+    <string-array name="characters">
+        <item>amidala</item>
+        <item>blue</item>
+        <item>c3po</item>
+        <item>calrissian</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>Femme politique dans la prélogie (épisodes I, II et III) de Star Wars. Elle est interprétée par Natalie Portman</item>
+        <item>Dévaronienne qui dirige une petite cellule de Partisans sous l\'Ère Impériale</item>
+        <item>Droïde protocolaire de série 3PO en armature dorée</item>
+        <item>Contrebandier aventureux qui devient par coup de chance baron administrateur de la Cité des Nuages de Bespin</item>
+    </string-array>
+</resources>
