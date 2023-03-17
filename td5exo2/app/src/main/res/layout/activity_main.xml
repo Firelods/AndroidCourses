@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="fromage" />
+
+        <SeekBar
+            android:id="@+id/cheeseSeekBar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/cheeseTextView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="50g" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Olives" />
+
+        <SeekBar
+            android:id="@+id/olivesSeekBar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/olivesTextView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="champignons" />
+
+        <SeekBar
+            android:id="@+id/mushroomsSeekBar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+        <TextView
+            android:id="@+id/mushroomsTextView"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="80g" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/pizzas_container"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:divider="#AACE1D"
+        android:dividerHeight="10dp"
+        android:orientation="vertical">
+
+
+    </ListView>
+    <Button
+        android:id="@+id/buttonOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Commander"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        />
+</LinearLayout>
