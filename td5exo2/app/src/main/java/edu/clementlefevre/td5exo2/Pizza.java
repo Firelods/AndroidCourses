@@ -4,17 +4,30 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pizza implements Parcelable {
     private String nom;
     private int image;
     private float price;
+    List<Ingredient> listIngredients;
+    private float originalPrice;
 
     protected Pizza(Parcel in) {
         nom = in.readString();
         image = in.readInt();
         price = in.readFloat();
         originalPrice = in.readFloat();
+        listIngredients = in.createTypedArrayList(Ingredient.CREATOR);
+    }
+
+    public Pizza(String nom, int prix, int image, ArrayList<Ingredient> listIngredient) {
+        this.nom = nom;
+        this.price = prix;
+        this.originalPrice = prix;
+        this.image = image;
+        this.listIngredients = listIngredient;
+
     }
 
     @Override
@@ -23,6 +36,7 @@ public class Pizza implements Parcelable {
         dest.writeInt(image);
         dest.writeFloat(price);
         dest.writeFloat(originalPrice);
+        dest.writeTypedList(listIngredients);
     }
 
     @Override
@@ -50,27 +64,13 @@ public class Pizza implements Parcelable {
         this.originalPrice = originalPrice;
     }
 
-    private float originalPrice;
-    private ArrayList<Item> listIngredients;
 
-    public Pizza(String nom, int image, float price) {
-        this.nom = nom;
-        this.image = image;
-        this.price = price;
-        this.originalPrice = price;
-        this.listIngredients = new ArrayList<>();
-        this.listIngredients.add(Item.FROMAGE);
-        this.listIngredients.add(Item.CHAMPIGNONS);
-        this.listIngredients.add(Item.OLIVES);
-
-
-    }
+    
 
     public String getNom() {
         return nom;
 
     }
-
 
 
     public int getImage() {
@@ -85,7 +85,7 @@ public class Pizza implements Parcelable {
         this.price = price;
     }
 
-    public Item[] getIngredients() {
+    public List<Ingredient> getIngredients() {
         return listIngredients;
     }
 }

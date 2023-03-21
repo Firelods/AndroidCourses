@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity2">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".MainActivity2"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="top|center">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="100dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"/>
+    <TextView
+        android:id="@+id/prixTotalPizza"
+        android:text="0"
+        android:layout_marginLeft="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/pizzaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="pizzaText"
+        android:textSize="20sp"
+        android:textColor="#FF0000"
+        />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:id="@+id/pizzaImage"
+        android:src="@drawable/pizza1"/>
+    <ListView
+        android:id="@+id/listIngredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>

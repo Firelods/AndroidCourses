@@ -4,7 +4,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SeekBar;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements ClickableActivity {
     private ListPizza listPizza;
+
     PizzaAdapter pizzaAdapter;
 
     @Override
@@ -33,7 +36,11 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
                 cheeseTextView.setText(progress + "g");
                 // update quantity of cheese
                 for (Pizza pizza : listPizza) {
-                    pizza.getIngredients()[0].quantity = progress;
+                    for (Ingredient ingredient : pizza.getIngredients()){
+                        if (ingredient.item == Item.FROMAGE) {
+                            ingredient.quantity = progress;
+                        }
+                    }
                 }
                 updateExtraPrices();
             }
@@ -59,7 +66,11 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
                 olivesTextView.setText(progress + "");
                 // update quantity of olives
                 for (Pizza pizza : listPizza) {
-                    pizza.getIngredients()[2].quantity = progress;
+                    for (Ingredient ingredient : pizza.getIngredients()){
+                        if (ingredient.item == Item.OLIVE) {
+                            ingredient.quantity = progress;
+                        }
+                    }
                 }
                 updateExtraPrices();
             }
@@ -88,7 +99,11 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
                 // get delta between old and new value
                 
                 for (Pizza pizza : listPizza) {
-                    pizza.getIngredients()[1].quantity = progress;
+                    for (Ingredient ingredient : pizza.getIngredients()){
+                        if (ingredient.item == Item.CHAMPIGNON) {
+                            ingredient.quantity = progress;
+                        }
+                    }
                 }
                 updateExtraPrices();
             }
@@ -107,6 +122,19 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
         Button buttonOrder = findViewById(R.id.buttonOrder);
         // disable button
         buttonOrder.setEnabled(false);
+
+        buttonOrder.setOnClickListener(v -> {
+            // swap to mainActivity2 with the parcelable of the selectionned pizza
+            // get the pizza selected
+            Pizza pizza = pizzaAdapter.getSelectedPizza();
+
+            // create the intent
+            Intent intent = new Intent(this, MainActivity2.class);
+            // add the pizza to the intent
+            intent.putExtra("pizza", pizza);
+            // start the activity
+            startActivity(intent);
+        });
     }
 
     @Override
@@ -128,16 +156,19 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
         for (Pizza pizza : listPizza) {
             // if cheese > 50, add 5cts
             float extraPrice = 0;
-            if (pizza.getIngredients()[0].quantity > 50) {
-                extraPrice += 0.05f * (pizza.getIngredients()[0].quantity - 50);
-            }
-            // if mushroom > 80, add 2cts
-            if (pizza.getIngredients()[1].quantity > 80) {
-                extraPrice += 0.02f * (pizza.getIngredients()[1].quantity - 80);
-            }
-            // if olive > 3, add 20cts
-             if (pizza.getIngredients()[2].quantity > 3) {
-                extraPrice += 0.2f * (pizza.getIngredients()[2].quantity - 3);
+            for (Ingredient ingredient : pizza.getIngredients()) {
+                if ((ingredient.item==Item.FROMAGE)&&(ingredient.quantity > 50)) {
+
+                    extraPrice += 0.05f * (ingredient.quantity - 50);
+                }
+                // if mushroom > 80, add 2cts
+                if ((ingredient.item==Item.CHAMPIGNON)&&(ingredient.quantity > 80)) {
+                    extraPrice += 0.02f * (ingredient.quantity - 80);
+                }
+                // if olive > 3, add 20cts
+                if ((ingredient.item==Item.OLIVE)&&(ingredient.quantity > 3)) {
+                    extraPrice += 0.2f * (ingredient.quantity - 3);
+                }
             }
              pizza.setPrice(pizza.getOriginalPrice() + extraPrice);
         }

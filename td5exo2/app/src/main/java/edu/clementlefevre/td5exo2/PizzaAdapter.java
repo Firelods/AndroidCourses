@@ -1,5 +1,6 @@
 package edu.clementlefevre.td5exo2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ public class PizzaAdapter extends BaseAdapter {
     private LayoutInflater mInflater;  //Un mécanisme pour gérer l'affichage graphique depuis un layout XML
     private ClickableActivity activity;
     private boolean isClicked = false;
+    private Pizza selectedPizza;
 
 
     public PizzaAdapter(ClickableActivity activity, ListPizza items) {
@@ -46,6 +48,7 @@ public class PizzaAdapter extends BaseAdapter {
         TextView pizzaPrice = layoutItem.findViewById(R.id.pizza_price);
         layoutItem.setOnClickListener(v -> {
             if (!isClicked){
+                this.selectedPizza = listPizza.get(position);
                 pizzaName.setTextSize(30);
                 pizzaName.setTextColor(activity.getContext().getResources().getColor(R.color.orange));
             }
@@ -69,5 +72,8 @@ public class PizzaAdapter extends BaseAdapter {
         return layoutItem; //On retourne l'item créé.
     }
 
+    public Pizza getSelectedPizza() {
+        return selectedPizza;
+    }
 
 }
