@@ -6,20 +6,13 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pizza implements Parcelable {
+public class Pizza {
     private String nom;
     private int image;
     private float price;
     List<Ingredient> listIngredients;
     private float originalPrice;
 
-    protected Pizza(Parcel in) {
-        nom = in.readString();
-        image = in.readInt();
-        price = in.readFloat();
-        originalPrice = in.readFloat();
-        listIngredients = in.createTypedArrayList(Ingredient.CREATOR);
-    }
 
     public Pizza(String nom, int prix, int image, ArrayList<Ingredient> listIngredient) {
         this.nom = nom;
@@ -30,31 +23,8 @@ public class Pizza implements Parcelable {
 
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(nom);
-        dest.writeInt(image);
-        dest.writeFloat(price);
-        dest.writeFloat(originalPrice);
-        dest.writeTypedList(listIngredients);
-    }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
 
-    public static final Creator<Pizza> CREATOR = new Creator<Pizza>() {
-        @Override
-        public Pizza createFromParcel(Parcel in) {
-            return new Pizza(in);
-        }
-
-        @Override
-        public Pizza[] newArray(int size) {
-            return new Pizza[size];
-        }
-    };
 
     public float getOriginalPrice() {
         return originalPrice;

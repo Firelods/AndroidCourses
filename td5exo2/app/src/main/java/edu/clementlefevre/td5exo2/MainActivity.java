@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ListView pizzasContainer = findViewById(R.id.pizzas_container);
-        listPizza = new ListPizza();
+        listPizza= ListPizza.getInstance();
         pizzaAdapter = new PizzaAdapter(this, listPizza);
         pizzasContainer.setAdapter(pizzaAdapter);
 
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements ClickableActivity
             // create the intent
             Intent intent = new Intent(this, MainActivity2.class);
             // add the pizza to the intent
-            intent.putExtra("pizza", pizza);
+            intent.putExtra("pizza", listPizza.indexOf(pizza));
             // start the activity
             startActivity(intent);
         });

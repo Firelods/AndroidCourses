@@ -25,7 +25,7 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         // collect the pizza object from the intent
-        Pizza pizza = (Pizza) getIntent().getParcelableExtra("pizza");
+        Pizza pizza = ListPizza.getInstance().get(getIntent().getIntExtra("pizza", 0));
 
         ImageView imageView = findViewById(R.id.pizzaImage);
         imageView.setImageResource(pizza.getImage());

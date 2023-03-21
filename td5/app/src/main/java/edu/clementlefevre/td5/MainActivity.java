@@ -33,4 +33,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    // on resume method
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EditText editText = findViewById(R.id.editText);
+        editText.setText("");
+    }
 }

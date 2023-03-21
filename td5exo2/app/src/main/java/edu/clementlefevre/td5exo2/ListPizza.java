@@ -3,8 +3,16 @@ package edu.clementlefevre.td5exo2;
 import java.util.ArrayList;
 
 public class ListPizza extends ArrayList<Pizza> {
+    private static ListPizza instance=null;
 
-    public ListPizza(){
+    public static ListPizza getInstance(){
+        if (instance==null) {
+            instance = new ListPizza();
+        }
+        return instance;
+    }
+
+    private ListPizza(){
         ArrayList<Ingredient> listIngredient1 = new ArrayList<>();
         listIngredient1.add(new Ingredient(Item.TOMATE,20,"dl"));
         listIngredient1.add(new Ingredient(Item.POIVRON,1,""));
